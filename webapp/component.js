@@ -37,6 +37,7 @@ sap.ui.define(
         //   fallbackLocale: "",
         // });
         // this.setModel(i18nModel, "i18n");
+        //MOVED TO MANIFEST.JSON
       },
     });
   }
