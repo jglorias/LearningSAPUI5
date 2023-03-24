@@ -8,7 +8,7 @@ sap.ui.define(
   function (Controller, MessageToast, JSONModel, ResourceModel) {
     "use strict";
     return Controller.extend("sap.ui.demo.walkthrough.App", {
-      onInit: function () {
+      /*onInit: function () {
         //Initalization Event
         // Set data model on view in JSON format
         var oData = {
@@ -26,6 +26,8 @@ sap.ui.define(
         });
         this.getView().setModel(i18nModel, "i18n"); //Second part is just alias
       },
+      MOVED TO COMPONENT.JS*/
+
       onShowHello: function () {
         //Read Message from i18n Model
         var oBundle = this.getView().getModel("i18n").getResourceBundle();
