@@ -1,13 +1,25 @@
 <mvc:View
-   controllerName="sap.ui.demo/walkthrough.controller.App"
-   xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc">
-   <!--<Text text="Hello UI5 from XML View, Part 1 where it just shows text"/>-->
-   <Button text="{i18n>showHelloButtonText}" press=".onShowHello"></Button> <!--Event is in the controller, the {} is to reference the Properties i18n file-->
-   <Input
-        value="{/recipient/name}"
-        description="Hello {/recipient/name}"
-        valueLiveUpdate="true" 
-        width="60%"/>
-        <!--Real Time Update + Calling JSON File, make sure to set compatVersion in index.html script to edge-->
+	controllerName="sap.ui.demo.walkthrough.controller.App"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+        <!--<Text text="Hello UI5 from XML View, Part 1 where it just shows text"/>-->
+	<Shell> <!-- The Blue Background -->
+		<App class="myAppDemoWT">
+			<pages>
+				<Page title="{i18n>homePageTitle}">
+                                <headerContent> 
+                                <Button icon="sap-icon://hello-world"
+                                press=".onOpenDialog"
+                                />
+                                </headerContent>
+					<content>
+        <!-- Panel moved to HelloPanel.view.xml-->
+                                        <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
+										<mvc:XMLView viewName="sap.ui.demo.walkthrough.view.InvoiceList"/>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
 </mvc:View>

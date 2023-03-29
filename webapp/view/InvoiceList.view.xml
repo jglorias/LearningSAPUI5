@@ -1,0 +1,49 @@
+<mvc:View
+controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+xmlns="sap.m"
+xmlns:mvc="sap.ui.core.mvc">
+    <List
+        id="invoiceList"
+        headerText="{i18n>invoiceListTitle}"
+        class="saUiResponsiveMargin"
+        width="auto"
+        items="{
+            path: 'invoice>/Invoices',
+            sorter: {
+                path: 'ShipperName',
+                group: true
+                }
+            }">
+        <headerToolbar>
+            <Toolbar>
+            <Title text="{i18n>invoiceListTitle}"/>
+            <ToolbarSpacer></ToolbarSpacer>
+            <SearchField width="50%" search=".onFilterInvoices"/>
+            </Toolbar>
+        </headerToolbar>
+                <!-- Search Bar on the Header ^^ -->
+        <items>
+            <ObjectListItem
+                title="{invoice>Quantity} x {invoice>ProductName}"
+                number="{
+                    parts: [{path: 'invoice>ExtendedPrice'}, {path: 'view>/currency'}],
+                    type: 'sap.ui.model.type.Currency',
+                    formatOptions: {
+                        showMeasure: false
+                    }
+                }"
+                numberUnit="{view>/currency}"
+                numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}">
+                <!-- Java Shortand. If invoice's ExtendedPrice is over 50, the error, but if not, then success-->
+                <!-- Error means red number, Success meams green number-->
+                <firstStatus>
+                    <ObjectStatus text="{
+                        path: 'invoice>Status',
+                        formatter: '.formatter.statusText'
+                    }"/>
+                </firstStatus>
+                <!-- Telling the FirstStatus to find the Status of products in invoice using the path and then show it -->
+                </ObjectListItem>
+        </items>
+    </List>
+</mvc:View>

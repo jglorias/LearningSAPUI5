@@ -1,0 +1,15 @@
+/* Make sure to only use outside CSS stuff when you really need to because SAP might not want to maintain this code, 
+so just stick with the usual template SAPUI5 provides.*/
+html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
+  margin-right: 0.125rem;
+}
+/* Dir Ltr means Direction Left to Right for English/Chinese/German.. languages. The other way around is for Arabic languages for ex. (Right to Left)*/
+
+html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
+  margin-left: 0.125rem;
+}
+
+.myAppDemoWT .myCustomText {
+  display: inline-block;
+  font-weight: bold;
+}

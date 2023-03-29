@@ -27,21 +27,25 @@ sap.ui.define(
         this.getView().setModel(i18nModel, "i18n"); //Second part is just alias
       },
       MOVED TO COMPONENT.JS*/
+      // onShowHello: function () {
+      //   //Read Message from i18n Model
+      //   var oBundle = this.getView().getModel("i18n").getResourceBundle();
+      //   var sRecipient = this.getView()
+      //     .getModel()
+      //     .getProperty("/recipient/name"); //Comes from old JSON file
+      //   var sMsg = oBundle.getText("helloMsg", [sRecipient]); //Comes from the i18n helloMsg property
+      //   //Show Message
+      //   MessageToast.show(sMsg);
+      //   //Older code that will be good reference
+      //   //alert("Hello there. This is triggered by the Button."); Other part that calls an alert
+      //   //MessageToast.show("Hello there on Message Toast!"); //Message Toast is the notif on the bottom of the screen
+      // },
+      //MOVED TO HELLOPANEL.CONTROLLER.JS
 
-      onShowHello: function () {
-        //Read Message from i18n Model
-        var oBundle = this.getView().getModel("i18n").getResourceBundle();
-        var sRecipient = this.getView()
-          .getModel()
-          .getProperty("/recipient/name"); //Comes from old JSON file
-        var sMsg = oBundle.getText("helloMsg", [sRecipient]); //Comes from the i18n helloMsg property
-        //Show Message
-        MessageToast.show(sMsg);
-        //Older code that will be good reference
-
-        //alert("Hello there. This is triggered by the Button."); Other part that calls an alert
-        //MessageToast.show("Hello there on Message Toast!"); //Message Toast is the notif on the bottom of the screen
+      onOpenDialog: function () {
+        this.getOwnerComponent().openHelloDialog();
       },
+      //We allowed to make this fragment be able to be called anywhere
     });
   }
 );
