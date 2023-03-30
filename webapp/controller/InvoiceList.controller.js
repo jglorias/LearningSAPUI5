@@ -37,6 +37,17 @@ sap.ui.define(
         var oBinding = oList.getBinding("items");
         oBinding.filter(aFilter);
       },
+      //Press button on Invoice List, route it to somewhere else.
+
+      onPress: function (oEvent) {
+        var oItem = oEvent.getSource();
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("detail", {
+          invoicePath: window.encodeURIComponent(
+            oItem.getBindingContext("invoice").getPath().substr(1)
+          ),
+        });
+      },
     });
   }
 );

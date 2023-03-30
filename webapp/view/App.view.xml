@@ -1,25 +1,26 @@
-<mvc:View
-	controllerName="sap.ui.demo.walkthrough.controller.App"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true">
-        <!--<Text text="Hello UI5 from XML View, Part 1 where it just shows text"/>-->
-	<Shell> <!-- The Blue Background -->
-		<App class="myAppDemoWT">
-			<pages>
-				<Page title="{i18n>homePageTitle}">
+<mvc:View controllerName="sap.ui.demo.walkthrough.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+	<!--<Text text="Hello UI5 from XML View, Part 1 where it just shows text"/>-->
+    <Shell><!-- The Blue Background -->
+        <App class="myAppDemoWT" id="app"/>
+		<!--
+            <pages>
+                <Page title="{i18n>homePageTitle}">
                                 <headerContent> 
                                 <Button icon="sap-icon://hello-world"
                                 press=".onOpenDialog"
                                 />
                                 </headerContent>
-					<content>
-        <!-- Panel moved to HelloPanel.view.xml-->
+                    <content>
+
                                         <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
-										<mvc:XMLView viewName="sap.ui.demo.walkthrough.view.InvoiceList"/>
-					</content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+                                        <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.InvoiceList"/>
+                    </content>
+                </Page>
+            </pages>
+            -->
+            <!-- Panel moved to HelloPanel.view.xml-->
+
+    </Shell>
 </mvc:View>

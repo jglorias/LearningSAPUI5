@@ -9,18 +9,12 @@ sap.ui.define(
     "use strict";
     return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
       metadata: {
-        // rootView: {
-        //   viewName: "sap.ui.demo.walkthrough.view.App",
-        //   type: "XML",
-        //   async: true,
-        //   id: "app", (We are referencing the Manifest instead after editing it to match these settings)
-
         manifest: "json",
       },
       init: function () {
-        // //Calling the Init function of the Parent UI Component from SAP
+        // call the init function of the parent
         UIComponent.prototype.init.apply(this, arguments);
-        // Setting the Data Models that was in App.controller.js with the JSON Model
+        // set data models
         var oData = {
           recipient: {
             name: "UI5",
@@ -29,24 +23,17 @@ sap.ui.define(
         var oModel = new JSONModel(oData);
         this.setModel(oModel);
 
-        //Setting the Dialog
+        // set dialog
         this._helloDialog = new HelloDialog(this.getRootControl());
 
-        //Setting the i18n Model
-        // var i18nModel = new ResourceModel({
-        //   bundleName: "sap.ui.demo.walkthrough.i18n.i18n",
-        //   supportedLocales: [""],
-        //   fallbackLocale: "",
-        // });
-        // this.setModel(i18nModel, "i18n");
-        //MOVED TO MANIFEST.JSON
+        // create the views based on the url/hash
+        this.getRouter().initialize();
       },
 
       exit: function () {
         this._helloDialog.destroy();
         delete this._helloDialog;
       },
-      //Just to clear stuff up
 
       openHelloDialog: function () {
         this._helloDialog.open();
