@@ -4,8 +4,9 @@ sap.ui.define(
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/resource/ResourceModel",
     "./controller/HelloDialog",
+    "sap/ui/Device",
   ],
-  function (UIComponent, JSONModel, ResourceModel, HelloDialog) {
+  function (UIComponent, JSONModel, ResourceModel, HelloDialog, Device) {
     "use strict";
     return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
       metadata: {
@@ -23,11 +24,28 @@ sap.ui.define(
         var oModel = new JSONModel(oData);
         this.setModel(oModel);
 
+        // set device model
+        var oDeviceModel = new JSONModel(Device);
+        oDeviceModel.setDefaultBindingMode("OneWay");
+        this.setModel(oDeviceModel, "device");
+
         // set dialog
         this._helloDialog = new HelloDialog(this.getRootControl());
 
         // create the views based on the url/hash
         this.getRouter().initialize();
+      },
+
+      //If the device does not support touch, then compact view, if yes, Cozy view.
+      getContentDensityClass: function () {
+        if (!this._sContentDensityClass) {
+          if (!Device.support.touch) {
+            this._sContentDensityClass = "sapUiSizeCompact";
+          } else {
+            this._sContentDensityClass = "sapUiSizeCozy";
+          }
+        }
+        return this._sContentDensityClass;
       },
 
       exit: function () {

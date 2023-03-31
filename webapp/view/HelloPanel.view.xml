@@ -1,23 +1,39 @@
-<mvc:View controllerName="sap.ui.demo.walkthrough.controller.HelloPanel"
+<mvc:View
+    controllerName="sap.ui.demo.walkthrough.controller.HelloPanel"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-    <Panel headerText="{i18n>helloPanelTitle}" class="sapUiResponsiveMargin" width="auto"> 
-     <!-- Making the whole layout with the blue page title and things looking like a Fiori app -->
+    <Panel
+        headerText="{i18n>helloPanelTitle}"
+        class="sapUiResponsiveMargin"
+        width="auto"
+        expandable="{device>/system/phone}"
+        expanded="{= !${device>/system/phone} }"
+        accessibleRole="Region">
+             <!-- Making the whole layout with the blue page title and things looking like a Fiori app -->
         <content>
             <Button
                 id="helloDialogButton"
                 icon="sap-icon://world"
                 text="{i18n>openDialogButtonText}"
                 press=".onOpenDialog"
-                class="sapUiSmallMarginEnd"/>
-            <!-- The Dialogue Button-->
-            <Button text="{i18n>showHelloButtonText}" press=".onShowHello" class="myCustomButton"/>
-            <!--Making the button not attached to the text fields with class="sapUiSmallMarginEnd"-->
-            <Input value="{/recipient/name}" description="Hello {/recipient/name }" valueLiveUpdate="true" width="60%"/>
-            <FormattedText htmlText="Hello {/recipient/name}" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
-            <!--Real Time Update + Calling JSON File, make sure to set compatVersion in index.html script to edge-->
+                class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop"/>
+                            <!-- The Dialogue Button-->
+            <Button
+                text="{i18n>showHelloButtonText}"
+                press=".onShowHello"
+                class="myCustomButton"/>
+                            <!--Making the button not attached to the text fields with class="sapUiSmallMarginEnd"-->
+            <Input
+                value="{/recipient/name}"
+                valueLiveUpdate="true"
+                width="60%"/>
+            <FormattedText
+                htmlText="Hello {/recipient/name}"
+                class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+                            <!--Real Time Update + Calling JSON File, make sure to set compatVersion in index.html script to edge-->
             <!-- Always add the / before the recipient because thats how u call stuff here-->
             <!-- Formatted Text for Custom Text-->
+
         </content>
     </Panel>
 </mvc:View>

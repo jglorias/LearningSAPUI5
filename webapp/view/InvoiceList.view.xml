@@ -2,9 +2,21 @@
 controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
 xmlns="sap.m"
 xmlns:mvc="sap.ui.core.mvc">
+    <Panel accessibleRole="Region">
+    <headerToolbar>
+        <Toolbar>
+            <Title text="{i18n>invoiceListTitle}"/>
+            <ToolbarSpacer/>
+            <SearchField
+                width="50%"
+                search=".onFilterInvoices"
+                ariaLabelledBy="searchFieldLabel"
+                ariaDescribedBy="searchFieldDescription"
+                placeholder="{i18n>searchFieldPlaceHolder}"/>
+        </Toolbar>
+    </headerToolbar>
     <Table
         id="invoiceList"
-        headerText="{i18n>invoiceListTitle}"
         class="saUiResponsiveMargin"
         width="auto"
         items="{
@@ -14,33 +26,36 @@ xmlns:mvc="sap.ui.core.mvc">
                 group: true
                 }
             }">
-        <headerToolbar>
-            <Toolbar>
-            <Title text="{i18n>invoiceListTitle}"/>
-            <ToolbarSpacer></ToolbarSpacer>
-            <SearchField width="50%" search=".onFilterInvoices"/>
-            </Toolbar>
-        </headerToolbar>
-                <!-- Search Bar on the Header ^^ -->
         <columns>
-            <Column hAlign="End" minScreenWidth="Small" demandPopin="true" width="4em">
-            <Text text="{i18n>columnQuantity}"></Text>
-            </Column>
+            <Column
+                hAlign="End"
+                minScreenWidth="Small"
+                demandPopin="true"
+                width="4em">
+                <Text text="{i18n>columnQuantity}"/>
+            </Column>   
             <Column>
-                <Text text="{i18n>columnName}"/>
+                <Text text="{i18n>columName}"/>
             </Column>
-            <Column minScreenWidth="Small" demandPopin="true">
-            <Text text="{i18n>columnStatus}"/>
+            <Column
+                minScreenWidth="small"
+                demandPopin="true">
+                <Text text="{i18n>columnStatus}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="false">
-            <Text text="{i18n>columnSupplier}"></Text>
+            <Column 
+                minScreenWidth="Tablet"
+                demandPopin="false">
+                <Text text="{i18n>columnSupplier}"/>
             </Column>
-            <Column hAlign="End">
-            <Text text="{i18n>columnPrice}"/>
+            <Column
+                hAlign="End">
+                <Text text="{i18n>columnPrice}"/>
             </Column>
         </columns>
         <items>
-        <ColumnListItem type="Navigation" press=".onPress">
+            <ColumnListItem
+                type="Navigation"
+                press=".onPress">
                 <cells>
                     <ObjectNumber number="{invoice>Quantity}" emphasized="false"/>
                     <ObjectIdentifier title="{invoice>ProductName}"/>
@@ -59,9 +74,9 @@ xmlns:mvc="sap.ui.core.mvc">
                         }"
                         unit="{view>currency}"
                         state="{= ${invoiceExtendedPrice} > 50 ? 'Error' : 'Success'}"/>
-            </cells>
-        </ColumnListItem>
-        <!--
+                </cells>
+            </ColumnListItem>
+                   <!--
             <ObjectListItem
                 title="{invoice>Quantity} x {invoice>ProductName}"
                 number="{
@@ -90,7 +105,7 @@ xmlns:mvc="sap.ui.core.mvc">
                 <!-- Error means red number, Success meams green number-->
                 <!-- Telling the FirstStatus to find the Status of products in invoice using the path and then show it -->
                 <!-- Commented code above this previous comments no longer needed as we are handling it with responsiveness in Tables-->
-
         </items>
     </Table>
+    </Panel>
 </mvc:View>

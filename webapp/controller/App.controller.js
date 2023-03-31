@@ -41,7 +41,11 @@ sap.ui.define(
       //   //MessageToast.show("Hello there on Message Toast!"); //Message Toast is the notif on the bottom of the screen
       // },
       //MOVED TO HELLOPANEL.CONTROLLER.JS
-
+      onInit: function () {
+        this.getView().addStyleClass(
+          this.getOwnerComponent().getContentDensityClass()
+        );
+      },
       onOpenDialog: function () {
         this.getOwnerComponent().openHelloDialog();
       },
